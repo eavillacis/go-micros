@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package solana;
+
+option go_package = "/solana";
+
+message Balance {
+    string balance = 1;
+}
+
+message BalanceRequest {
+    Balance account = 1;
+}
+
+message BalanceResponse {
+    uint64 balance = 1;
+    string error = 2;
+}
+
+service SolanaService {
+    rpc GetBalance(BalanceRequest) returns (BalanceResponse);
+}
